@@ -2,7 +2,7 @@ from tkinter import *
 import random
 
 
-class Foo:
+class Convertor:
     def __init__(self, parent):
         print("hello world")
 
@@ -10,6 +10,6 @@ class Foo:
 # main routine
 if __name__ == "__main__":
     root = Tk()
-    root.title("title goes here")
-    something = Foo(root)
+    root.title("Temperature Convertor")
+    something = Convertor(root)
     root.mainloop()
