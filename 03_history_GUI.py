@@ -7,9 +7,10 @@ class Convertor:
     def __init__(self, parent):
         
 		# Formatting variables...
-	    background_color = "light blue"
+	    background_color = "white"
 
 	    #In actual program this is blank and is populated with user calculations
+
 	    self.all_calc_list = ['0 degrees C is 32 degrees F'
 	    '40 degrees C is 104 degrees F'
 	    '40 degrees C is 4.4 degrees F'
@@ -32,17 +33,17 @@ class Convertor:
 	    #history button (row 1)
 	    self.history_button = Button(self.converter_frame, text="History",
 				  font=("Arial", "14"),
-				  padx=10, pady=10, command=self.history)
+				  padx=10, pady=10, command=lambda: self.history(self.all_calc_list))
 	    self.history_button.grid(row=1)
 
-    def history(self):
-        get_history = History(self)
-        # get_history.history_text.configure(text="history text goes here")
+    def history(self, calc_history):
+        History(self,calc_history)
+
 
 class History:
-    def __init__(self, partner):
+    def __init__(self, partner, calc_history):
 
-        background = "orange"
+        background = "white"
         
         #disable history button
         partner.history_button.config(state=DISABLED)
@@ -72,18 +73,37 @@ class History:
 
         #history output goes here.. (row 2)
 
+        #generate string from list of calculations...
+        history_string =""
+
+        if len(calc_history) >= 7:
+            for item in range(0, 7):
+                history_string += calc_history[len(calc_history) - item - 1  +"\n"]
+
+        else:
+            for item in calc_history:
+                history_string += calc_history[len(calc_history) - calc_history.index(item) -1] +"\n"
+                self.history_text.config(text="Here is your calculation"
+                " history. You can use the export button to save this "
+                "data to a text file if "
+                "desired")
+                
+
+        #Label to display calculation history to user...
+        self.calc_label = Label(self.history_frame, text=history_string, wrap=250, bg=background,font="Arial 12", justify=LEFT)
+        self.calc_label.grid(row=2)
+
         #Export / Dismiss Buttons Frame (row 3)
         self.export_dismiss_frame = Frame(self.history_frame)
-        self.export_dismiss_frame.grid(row=3, pady=10)
+        self.export_dismiss_frame.grid (row=3, pady=10)
 
         #Export Button
-        self.export_button = Button(self.export_dismiss_frame, text="Export", font="Arial 12 bold")
-        self.export_button.grid(row=0, column=0)
+        self.export_button = Button(self.export_dismiss_frame, text="Export", bg="white", font="Arial 12 bold")
+        self.export_button.grid(row=0, column=1)
 
-
-        #Dismiss Button 
-        self.dismiss_btn = Button(self.history_frame, text="Dismiss", width=10, bg="orange", font="arial, 10 bold", command=partial(self.close_history, partner))
-        self.dismiss_btn.grid(row=2, pady=10)
+        #Dismiss Button (row 2)
+        self.dismiss_btn = Button(self.history_frame, text="Dismiss", width=10, bg="white", font="arial, 10 bold", command=partial(self.close_history, partner))
+        self.dismiss_btn.grid(row=5, pady=10)
 
 
     def close_history(self, partner):
