@@ -7,7 +7,7 @@ class Converter:
     def __init__(self):
 
              # Formatting variables...
-            background_color = "purple"
+            background_color = "white"
 
             # Converter Main Screen GUI...
             self.converter_frame = Frame(width=300, height=300, bg=background_color)
@@ -35,7 +35,7 @@ class Converter:
 class Help():
     def __init__(self, partner):
 
-        background = "orange"
+        background = "white"
 
         #disable help button
         partner.help_button.config(state=DISABLED)
