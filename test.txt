@@ -1,0 +1,6 @@
+*****Temperature Convertor History****
+
+25 degrees C is -3.9 degrees F
+25 degrees C is 77 degrees F
+40 degrees C is 104 degrees F
+40 degrees C is 4.4 degrees F

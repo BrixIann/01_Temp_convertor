@@ -1,0 +1,4 @@
+25 degrees C is -3.9 degrees F
+25 degrees C is 77 degrees F
+35 degrees C is 1.7 degrees F
+35 degrees C is 95 degrees F

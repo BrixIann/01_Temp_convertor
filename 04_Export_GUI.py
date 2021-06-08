@@ -13,11 +13,11 @@ class Convertor:
 
 	    #In actual program this is blank and is populated with user calculations
 
-	    self.all_calc_list = ['0 degrees C is 32 degrees F'
-	    '40 degrees C is 104 degrees F'
-	    '40 degrees C is 4.4 degrees F'
-	    '12 degrees C is 53.6 degrees F'
-	    '24 degrees C is 75.2 degrees F'
+	    self.all_calc_list = ['0 degrees C is 32 degrees F',
+	    '40 degrees C is 104 degrees F',
+	    '40 degrees C is 4.4 degrees F',
+	    '12 degrees C is 53.6 degrees F',
+	    '24 degrees C is 75.2 degrees F',
 	    '100 degrees C is 37.8 degrees F']
 
 	    #Converter Main Screen GUI...
@@ -43,7 +43,15 @@ class Convertor:
 
     def help(self):
         get_help = Help(self)
-        get_help.help_text.configure(text="Help text goes here")
+        get_help.help_text.configure(text="Please enter a number in the box"
+                                          "and then push one of the buttons"
+                                          "to convert the number to either"
+                                          "degrees C or degrees F. \n\n"
+                                          "The Calculation History are shows"
+                                          "up to seven past calculations"
+                                          "(most recently at the top). \n\n You can "
+                                          "also export your full calculation"
+                                          "history to a text file if desired")
 
 class History:
     def __init__(self, partner, calc_history):
@@ -236,7 +244,8 @@ class Export():
 
             #add new line at end each item
             for item in calc_history:
-                f.write(item +"\n")
+                item += "\n"
+                f.write(item)
 
             #close file
             f.close()
